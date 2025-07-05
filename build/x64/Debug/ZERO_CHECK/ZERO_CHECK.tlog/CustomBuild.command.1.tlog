@@ -1,0 +1,10 @@
+^E:\C_PROJECTS_FOLDER\FIRST_YEAR_FINAL_PROJECT\BUILD\CMAKEFILES\8B6D407CCD3CE3932270620EC0A125C1\GENERATE.STAMP.RULE
+setlocal
+C:\Users\DELL\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\bin\cmake.exe -SE:/C_Projects_Folder/First_year_Final_Project -BE:/C_Projects_Folder/First_year_Final_Project/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file E:/C_Projects_Folder/First_year_Final_Project/build/Chess_in_C.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

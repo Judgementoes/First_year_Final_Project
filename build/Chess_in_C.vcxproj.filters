@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="E:\C_Projects_Folder\First_year_Final_Project\src\ChessBoard.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\C_Projects_Folder\First_year_Final_Project\src\chess_FEN.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\C_Projects_Folder\First_year_Final_Project\src\chess_board.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\C_Projects_Folder\First_year_Final_Project\src\chess_checksandpins.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\C_Projects_Folder\First_year_Final_Project\src\chess_game.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\C_Projects_Folder\First_year_Final_Project\src\chess_moves.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\C_Projects_Folder\First_year_Final_Project\src\chess_piece_data.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\C_Projects_Folder\First_year_Final_Project\src\chess_unmake.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="E:\C_Projects_Folder\First_year_Final_Project\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{DE16EFBF-80E2-3C04-865B-BDD6E875F8F3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
