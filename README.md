@@ -1,6 +1,6 @@
 This is the final project of the ECE2024 module "Introduction to Programming" taught by Professor Phong at VGU. Its aim is to be a chess engine with a playable GUI entirely in the C language.
 
-The engine is written entirely in C and is the back-end on which the game operates
+The engine is written entirely in C and is the back-end on which the game operates.
 Raylib - an external graphics rendering library written in C - is the library of choice to handle the GUI for the front-end for a user-friendly experience.
 
 Run the program by pressing the "Chess_in_C.exe" file.
