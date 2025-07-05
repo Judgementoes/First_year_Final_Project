@@ -620,6 +620,12 @@ int main(){
         //----------------------------------------------------------------------------------
         BeginDrawing();
 
+            // Uninitialized data guard
+            src = src;
+            dst = dst;
+            animation.src = animation.src;
+            animation.dst = animation.dst;
+
             ClearBackground(ChessBackground);
 
             DrawRectangleRounded(resignBtn, 0.2f, 10, (resign_hovered)? GRAY:DARKGRAY);
