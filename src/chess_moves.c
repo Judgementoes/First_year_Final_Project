@@ -416,7 +416,7 @@ void GenerateMoveList(Movelist *moves, Piece chessboard[8][8], coord PieceLocati
     for(int i = 0; i < 16; i++) MrPresidentSquares[i] = (coord){8, 8};
     findAssassins(chessboard, game, &assassins, MrPresidentSquares, &MrPresidentcount);
 
-    // printf("Assassins: %d\n", assassins);
+    //printf("Assassins: %d\n", assassins);
     // for(int i = 0; i<MrPresidentcount; i++){
     //     printf("MrPresident: %d %d\n", MrPresidentSquares[i].x, MrPresidentSquares[i].y);
     // }

@@ -137,7 +137,8 @@ void findAssassins(const Piece chessboard[8][8], const GameState *game, int *ass
         return;
     }
     int slidingOffset[8] = {-8, 8, -1, 1, -7, -9, 7, 9};
-    int knightOffset[8] = {-6, -15, -17, -10, 6, 15, 17, 10};    
+    int knightOffset[8] = {-6, -15, -17, -10, 6, 15, 17, 10};   
+    *MrPresidentcount = 0; 
     for(int i = 0; i<16; i++) MrPresidentSquares[i] = (coord){8, 8};
     if(game->turn == White && game->WhiteinCheck){
 
@@ -156,24 +157,30 @@ void findAssassins(const Piece chessboard[8][8], const GameState *game, int *ass
 
                 // Encounter enemy piece -> check if enemy can attack the king
                 int Start = 0, End = 8; // Logic to separate pieces
-                if (targetPiece.type == Rook) {
+                if (targetPiece.type == Rook && targetPiece.color == Black) {
                     End = 4;
                     // Encountered enemy rook on the vertical or horizontal
                     if (dirIdx >= Start && dirIdx < End) {
+                        //puts("Detected Black rook\n");
+                        //printf("rook at: %d %d\n", targetIdx/8, targetIdx%8);
                         MarkMrPresidentSquares(Rook, MrPresidentSquares, MrPresidentcount, game->WhiteKingIdx, targetIdx, dirIdx);
                         (*assassins)++;
                         break;
                     }
-                } else if (targetPiece.type == Bishop) {
+                } else if (targetPiece.type == Bishop && targetPiece.color == Black) {
                     Start = 4;
                     // Encountered enemy bishop on the diagonal
                     if (dirIdx >= Start && dirIdx < End) {
+                        //puts("Detected Black bishop\n");
+                        //printf("bishop at: %d %d\n", targetIdx/8, targetIdx%8);
                         MarkMrPresidentSquares(Bishop, MrPresidentSquares, MrPresidentcount, game->WhiteKingIdx, targetIdx, dirIdx);
                         (*assassins)++;
                         break;
                     }
-                } else if (targetPiece.type == Queen) {
+                } else if (targetPiece.type == Queen && targetPiece.color == Black) {
                     // Queens can check in all directions
+                    //puts("Detected Black queen\n");
+                    //printf("queen at: %d %d\n", targetIdx/8, targetIdx%8);
                     MarkMrPresidentSquares(Queen, MrPresidentSquares, MrPresidentcount, game->WhiteKingIdx, targetIdx, dirIdx);
                     (*assassins)++;
                     break;
@@ -182,11 +189,13 @@ void findAssassins(const Piece chessboard[8][8], const GameState *game, int *ass
                     Start = 6;
                     End = 8;
                     // Encountered enemy pawn right on the adjacent diagonal square
-                    if (dirIdx >= Start && dirIdx < End && traverseIdx == 0) {
+                    if (dirIdx >= Start && dirIdx < End && traverseIdx == 0 && targetPiece.color == Black) {
+                        //puts("Detected Black pawn\n");
+                        //printf("Pawn at: %d %d", targetIdx/8, targetIdx%8);
                         MarkMrPresidentSquares(Pawn, MrPresidentSquares, MrPresidentcount, game->WhiteKingIdx, targetIdx, dirIdx);
                         (*assassins)++;
-                        break;
                     }
+                    break;
                 }
             }
         }
@@ -229,7 +238,7 @@ void findAssassins(const Piece chessboard[8][8], const GameState *game, int *ass
                 if (targetPiece.type == Rook) {
                     End = 4;
                     // Encountered enemy rook on the vertical or horizontal
-                    if (dirIdx >= Start && dirIdx < End) {
+                    if (dirIdx >= Start && dirIdx < End && targetPiece.color == White) {
                         MarkMrPresidentSquares(Rook, MrPresidentSquares, MrPresidentcount, game->BlackKingIdx, targetIdx, dirIdx);
                         (*assassins)++;
                         break;
@@ -237,28 +246,28 @@ void findAssassins(const Piece chessboard[8][8], const GameState *game, int *ass
                 } else if (targetPiece.type == Bishop) {
                     Start = 4;
                     // Encountered enemy bishop on the diagonal
-                    if (dirIdx >= Start && dirIdx < End) {
+                    if (dirIdx >= Start && dirIdx < End && targetPiece.color == White) {
                         MarkMrPresidentSquares(Bishop, MrPresidentSquares, MrPresidentcount, game->BlackKingIdx, targetIdx, dirIdx);
                         (*assassins)++;
                         break;
                     }
-                } else if (targetPiece.type == Queen) {
+                } else if (targetPiece.type == Queen && targetPiece.color == White) {
                     // Queens can check in all directions
-                    if(targetPiece.color == White) {
-                        MarkMrPresidentSquares(Queen, MrPresidentSquares, MrPresidentcount, game->BlackKingIdx, targetIdx, dirIdx);
-                        (*assassins)++;
-                        break;
-                    }
+                    MarkMrPresidentSquares(Queen, MrPresidentSquares, MrPresidentcount, game->BlackKingIdx, targetIdx, dirIdx);
+                    (*assassins)++;
+                    break;
                 } else if (targetPiece.type == Pawn) {
                     // White pawns move down the board
                     Start = 4;
                     End = 6;
                     // Encountered enemy pawn right on the adjacent diagonal square
-                    if (dirIdx >= Start && dirIdx < End && traverseIdx == 0) {
+                    if (dirIdx >= Start && dirIdx < End && traverseIdx == 0 && targetPiece.color == White){
+                        // puts("Detected White pawn\n");
                         MarkMrPresidentSquares(Pawn, MrPresidentSquares, MrPresidentcount, game->BlackKingIdx, targetIdx, dirIdx);
                         (*assassins)++;
-                        break;
+                        
                     }
+                    break;
                 }
             }
         }
