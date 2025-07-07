@@ -812,28 +812,25 @@ int main(){
                     DrawText("Tie!", 657, 385, 75, WHITE);
                     if(insufficient) DrawText("(due to insufficient materials)", 492, 450, 30, WHITE);
                     if(game.HalfmoveClock == 50) DrawText("(due to fifty-move rule)", 539, 450, 30, WHITE);
-                }
-                else if(game.BlackinCheck){
-                    DrawText("White wins!", 525, 385, 75, WHITE);
-                    DrawText("By Checkmate!", 612, 450, 30, WHITE);
                 } else if(clocks[Black].time == 0.0){
                     DrawText("White wins!", 525, 385, 75, WHITE);
                     DrawText(" By Timeout! ", 622, 450, 30, WHITE);
                 } else if(game.turn == Black && resigned){
                     DrawText("White wins!", 525, 385, 75, WHITE);
                     DrawText("By Resignation", 607, 450, 30, WHITE);
-                }
-                else if(game.WhiteinCheck){
+                } else if(game.BlackinCheck){
+                    DrawText("White wins!", 525, 385, 75, WHITE);
+                    DrawText("By Checkmate!", 612, 450, 30, WHITE);
+                }  else if(game.turn == White && resigned){
+                    DrawText("Black wins!", 525, 385, 75, WHITE);
+                    DrawText("By Resignation", 607, 450, 30, WHITE);
+                } else if(game.WhiteinCheck){
                     DrawText("Black wins!", 525, 385, 75, WHITE);
                     DrawText("By Checkmate!", 612, 450, 30, WHITE);
                 } else if(clocks[White].time == 0.0){
                     DrawText("Black wins!", 525, 385, 75, WHITE);
                     DrawText(" By Timeout! ", 622, 450, 30, WHITE);
-                } else if(game.turn == White && resigned){
-                    DrawText("Black wins!", 525, 385, 75, WHITE);
-                    DrawText("By Resignation", 607, 450, 30, WHITE);
-                }
-                else DrawText("Stalemate!", 527, 385, 75, WHITE);
+                } else DrawText("Stalemate!", 527, 385, 75, WHITE);
                 DrawText("Press Enter to restart", 412, 475, 50, WHITE);
             }
 
