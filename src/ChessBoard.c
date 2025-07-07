@@ -183,7 +183,7 @@ int main(){
         static coord dst = (coord){8, 8};
         static coord dragdst = (coord){8, 8};
         static Move move;
-        static coord possibledst[16];
+        static coord possibledst[27]; // The queen can see at most 27 squares
         static int movecount = 0;
         // Moves animation
         static PieceAnimation animation;
@@ -301,7 +301,7 @@ int main(){
                 for(int i = 0; i<moves.count; i++){
                     if(Coordscmp(moves.move[i].src, src)){
                         possibledst[movecount++] = moves.move[i].dst;
-                        if(!Coordscmp(moves.move[i+1].src, src)) break; // exit early since the legal moves of a piece are stored next to each other
+                        if(i<moves.count-1) if(!Coordscmp(moves.move[i+1].src, src)) break; // exit early since the legal moves of a piece are stored next to each other
                     }
                 }
                 //
