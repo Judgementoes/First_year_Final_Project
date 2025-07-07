@@ -496,6 +496,8 @@ int main(){
                 unmakeMove(&unmakeStack, &game, chessboard, PieceLocations);
                 // --- Board state has been undone after this ---
 
+                exportFEN(chessboard, &game, FENPos);
+
                 // Play some sounds
                 if(ungame.BlackinCheck || ungame.WhiteinCheck) PlaySound(check_s); // move result in check
                 else if(unpiece.type == King && abs(unmove.dst.x - unmove.src.x) > 1) PlaySound(castle_s); // move was a castle
